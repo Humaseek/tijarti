@@ -1,7 +1,8 @@
 "use client";
+export const dynamic = "force-dynamic";
 
+import { Suspense, useRef, useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState, useRef, useEffect } from "react";
 import { BrandMark, AuthCard } from "@/components/auth/common";
 import { Btn } from "@/components/ui/controls";
 import { Num } from "@/components/ui/num";
@@ -10,6 +11,14 @@ import { Ico } from "@/components/ui/icon";
 import { useToast } from "@/components/ui/toast";
 
 export default function VerifyOtp() {
+  return (
+    <Suspense fallback={null}>
+      <VerifyOtpInner />
+    </Suspense>
+  );
+}
+
+function VerifyOtpInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { toast } = useToast();
