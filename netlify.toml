@@ -1,0 +1,20 @@
+# Netlify config — monorepo with Next.js at apps/web
+#
+# We install at the repo root so npm workspaces link the shared-types
+# package, then build the web app, then publish its .next directory.
+# The @netlify/plugin-nextjs plugin is auto-installed by Netlify when it
+# sees a Next.js project — we just need to point it at the right output.
+
+[build]
+  command = "npm install && npm run build --workspace=@tijarti/web"
+  publish = "apps/web/.next"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_VERSION  = "10"
+  # Disable Next.js telemetry on the build server
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# Auto-installed by Netlify, but explicit declaration ensures it runs.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
