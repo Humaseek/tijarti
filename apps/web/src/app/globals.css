@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * Tijarti theme variables.
+ *
+ * Primary color (UI identity) is a CSS variable so the ColorPicker can update
+ * it at runtime by writing `--tj-primary` on :root. Default = Teal Blue.
+ *
+ * Dark-mode variants live under .dark scope (Tailwind class-based dark mode).
+ */
+:root {
+  /* Primary — Teal Blue default (dark variant). RGB space-separated for Tailwind alpha. */
+  --tj-primary: 91 155 213;
+
+  /* Scroll behavior */
+  scroll-behavior: smooth;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: theme("colors.bg.DEFAULT");
+  color: theme("colors.text.DEFAULT");
+  font-family: theme("fontFamily.ar");
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html.dark body {
+  background: theme("colors.bg.dark");
+  color: theme("colors.text.dark");
+}
+
+/* Numeric displays — Inter + tabular-nums */
+.tj-num {
+  font-family: theme("fontFamily.num");
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum", "lnum";
+  direction: ltr;
+}
+
+/* Tap feedback for clickable cards/rows */
+.tj-tap {
+  cursor: pointer;
+  transition: background 100ms, opacity 100ms;
+}
+.tj-tap:active {
+  opacity: 0.55;
+}
+
+/* Button press feedback */
+.tj-btn {
+  cursor: pointer;
+  user-select: none;
+  transition: transform 120ms, opacity 120ms;
+}
+.tj-btn:active {
+  transform: scale(0.96);
+  opacity: 0.8;
+}
+
+/* Loading skeleton shimmer */
+@keyframes tj-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.tj-skeleton {
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: tj-shimmer 1.6s ease-in-out infinite;
+}
+html.dark .tj-skeleton {
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    transparent 100%
+  );
+}
+
+/* Spin for loading indicators */
+@keyframes tj-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Undo toast entry animation */
+@keyframes tj-slide-up {
+  from { transform: translateY(12px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.tj-slide-up {
+  animation: tj-slide-up 180ms ease-out;
+}
+
+/* Custom scrollbar — slim, subtle */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+::-webkit-scrollbar-track { background: transparent; }

@@ -1,0 +1,43 @@
+{
+  "name": "Tijarti — تجارتي",
+  "short_name": "Tijarti",
+  "description": "رفيقكِ اليومي لإدارة محلكِ — وضوح مالي بدون تعقيدات.",
+  "start_url": "/app",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FAF7F0",
+  "theme_color": "#0F6E56",
+  "lang": "ar",
+  "dir": "rtl",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "فاتورة جديدة",
+      "url": "/app/sales/new",
+      "description": "سجّلي فاتورة جديدة بسرعة"
+    },
+    {
+      "name": "مصروف جديد",
+      "url": "/app/expenses/new",
+      "description": "سجّلي مصروف"
+    },
+    {
+      "name": "التقارير",
+      "url": "/app/reports"
+    }
+  ]
+}

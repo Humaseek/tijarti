@@ -1,26 +1,22 @@
 {
-  "name": "tijarti-app",
+  "name": "tijarti",
   "version": "0.1.0",
   "private": true,
+  "description": "Tijarti — financial management for Arab-Israeli SMBs. Monorepo: web (Next.js), mobile (Expo, soon), shared types + business logic.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "npm run dev --workspace=@tijarti/web",
+    "dev:web": "npm run dev --workspace=@tijarti/web",
+    "build": "npm run build --workspace=@tijarti/web",
+    "build:web": "npm run build --workspace=@tijarti/web",
+    "lint": "npm run lint --workspace=@tijarti/web",
+    "typecheck": "npm run typecheck --workspaces --if-present"
   },
-  "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.35"
-  },
-  "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.35"
+  "engines": {
+    "node": ">=18.17.0",
+    "npm": ">=9.0.0"
   }
 }
